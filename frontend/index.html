@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Movie Recommendations</h1>
+        <div class="form">
+            <label for="genreInput">Enter preferred genre:</label>
+            <input type="text" id="genreInput" placeholder="e.g., Action, Comedy, Drama">
+            <button onclick="getRecommendations()">Get Recommendations</button>
+        </div>
+        <div id="recommendations" class="recommendations"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> -->
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Recommendation System</title>
+<style>
+    /* CSS for styling */
+    /* ... */
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="panel">
+        <h2>Recommended Movies</h2>
+        <ul id="recommended-movies" class="movie-list"></ul>
+    </div>
+</div>
+
+<script>
+    // Function to fetch movie recommendations from the backend
+    function fetchRecommendations(user_id) {
+        fetch(`/recommendations/${user_id}`)
+            .then(response => response.json())
+            .then(data => populateMovieList("recommended-movies", data))
+            .catch(error => console.error('Error fetching recommendations:', error));
+    }
+
+    // Function to populate movie list
+    function populateMovieList(containerId, movies) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; // Clear existing content
+        movies.forEach(movie => {
+            const listItem = document.createElement("li");
+            listItem.className = "movie-list-item";
+            const img = document.createElement("img");
+            img.src = movie.image_url;
+            listItem.appendChild(img);
+            container.appendChild(listItem);
+        });
+    }
+
+    // Load movie recommendations when the page is loaded
+    window.onload = function() {
+        const userId = 123; // Replace with actual user ID
+        fetchRecommendations(userId);
+    };
+</script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Recommendation System</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #650000;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+  }
+  .panel {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 20px;
+  }
+  .panel1{
+    background-color: white;
+  }
+  .panel img {
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: black;
+  }
+  .panel img:hover {
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Movie Recommendation System</h1>
+
+         <!-- Login Icon -->
+        <div class="login-icon" id="loginIcon">
+            <i class="fas fa-user"></i> <!-- Font Awesome icon for user -->
+        </div>
+
+        <!-- Login form -->
+        <div class="login-form" id="loginForm" style="display: none;">
+            <h2>Login</h2>
+            <form>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="submit" value="Login">
+            </form>
+        </div>
+        <div class="panel">
+          <h2>Recommended Movies</h2>
+          <div id="panel1">
+            <!-- Images will be populated here -->
+          </div>
+        </div>
+        <div class="panel">
+          <h2>Liked Movies</h2>
+          <div id="panel2">
+            <!-- Images will be populated here -->
+          </div>
+        </div>
+      </div>
+
+<script>
+  // Mock data for movie images (You can replace this with actual data from a backend)
+  const movies_recommended = [
+    "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.seventeen.com%2Fcelebrity%2Fmovies-tv%2Fg31918311%2Fmovies-to-watch%2F&psig=AOvVaw09jxMZWx9Ca784U-Lr7jzs&ust=1708055395887000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCODXg6u4rIQDFQAAAAAdAAAAABAE",
+    "https://image.tmdb.org/t/p/w500/bbxtz5V0vvnTDA2qWbiiRC77Ok9.jpg",
+    "https://image.tmdb.org/t/p/w500/rpY8O5gbVN5BqypdYOmG9fnPNRp.jpg",
+    "https://image.tmdb.org/t/p/w500/hmbwNbG6XtwMO5mCkHZLhOeHd5F.jpg",
+    "https://image.tmdb.org/t/p/w500/gwPSoYUHAKmdyVywgLpKKA4BjRr.jpg",
+    "https://image.tmdb.org/t/p/w500/9HjBL1E1VQVZsewf4p6fK6IOuOr.jpg",
+    "https://image.tmdb.org/t/p/w500/4zmNJNQkugbalqJLnKp0wnlp8i3.jpg",
+    "https://image.tmdb.org/t/p/w500/mDCZrzyhpL3kIEO7fZpKcM1hVYS.jpg",
+    "https://image.tmdb.org/t/p/w500/s9ye87pvq2IaDvjv9x4IOXVjvA7.jpg",
+    "https://image.tmdb.org/t/p/w500/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg"
+  ];
+
+  const movies_watched = [
+    "https://m.media-amazon.com/images/I/81Mklh7J1qL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/51MpwFSCdBL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/81YR0aaJr+L._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/51clhOO4jIL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/81C5j92ZbsL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/71LDpWSt6rL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/71ysSujYmXL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/71z1U9uTHgL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/81VpgUOIdDL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/71bZ4QxURgL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/51iB5v2Ex6L._AC_SY1000_.jpg",
+    "https://m.media-amazon.com/images/I/71jBB29e2TL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/51J9w95gXeL._AC_SY1000_.jpg",
+    "https://m.media-amazon.com/images/I/51LSpvJLsfL._AC_SY1000_.jpg",
+    "https://m.media-amazon.com/images/I/71wbIv+K7wL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/81CBAIhOrIL._AC_SY741_.jpg",
+    "https://m.media-amazon.com/images/I/71pZIooXnGL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/81Uo1KiF6VL._AC_SY679_.jpg",
+    "https://m.media-amazon.com/images/I/61yyE2SdzoL._AC_SY741_.jpg",
+    "https://m.media-amazon.com/images/I/61TG6EIn+NL._AC_SY679_.jpg"
+  ]
+
+  // Function to populate panel with movie images
+  function populatePanel(panelId, movies) {
+    const panel = document.getElementById(panelId);
+    panel.innerHTML = movies.map(movie => `<img src="${movie}" alt="Movie">`).join('');
+  }
+
+  // Populate panels with movie images
+  populatePanel('panel1', movies_recommended);
+  populatePanel('panel2', movies_watched);
+
+  const loginIcon = document.getElementById('loginIcon');
+  const loginForm = document.getElementById('loginForm');
+  loginIcon.addEventListener('click', function() {
+    loginForm.style.display = loginForm.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
+
+</body>
+</html>

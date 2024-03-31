@@ -1,0 +1,12 @@
+torch-scatter
+torch-sparse
+pyg-lib
+git+https://github.com/pyg-team/pytorch_geometric.git
+pandas
+numpy
+matplotlib
+scikit-learn
+torch
+tqdm
+fuzzywuzzy
+openai==0.28
