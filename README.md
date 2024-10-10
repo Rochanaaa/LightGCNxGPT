@@ -1,6 +1,6 @@
 # LightGCNxGPT
 
-This Final Year Project aims to explore the integration of GCNs and GPT in Movie
+This project aims to explore the integration of GCNs and GPT in Movie
 Recommendation Systems, focusing on the synergy between two advanced
 paradigms that can overcome the limitations of existing approaches. By delving into
 the capabilities of GCNs to model graph-based dependencies and GPT's prowess in
